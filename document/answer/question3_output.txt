@@ -1,0 +1,136 @@
+============================================================
+Question 3: Association Rule Mining
+============================================================
+Dataset: 1,000 transactions, 30 items
+min_support = 0.05, min_confidence = 0.3
+
+All Rules Generated: 224
+
+============================================================
+(A) Basic Rules = Support >= 0.05 AND Confidence >= 0.3
+============================================================
+Count: 121 rules
+                     antecedent        consequent  support  confidence     lift       p_value
+            frozenset({cereal}) frozenset({milk})    0.192    1.000000 3.134796 1.725405e-111
+             frozenset({bread}) frozenset({milk})    0.129    1.000000 3.134796  5.967343e-70
+       frozenset({bag, cereal}) frozenset({milk})    0.129    1.000000 3.134796  5.967343e-70
+             frozenset({chips}) frozenset({beer})    0.113    1.000000 4.032258  5.139122e-85
+        frozenset({bag, bread}) frozenset({milk})    0.087    1.000000 3.134796  2.081941e-45
+     frozenset({water, cereal}) frozenset({milk})    0.083    1.000000 3.134796  3.476111e-43
+frozenset({bag, water, cereal}) frozenset({milk})    0.056    1.000000 3.134796  1.174017e-28
+        frozenset({beer, rice})  frozenset({bag})    0.080    0.747664 1.072688  2.733135e-01
+        frozenset({soda, rice})  frozenset({bag})    0.081    0.743119 1.066168  3.175103e-01
+     frozenset({soda, chicken})  frozenset({bag})    0.066    0.741573 1.063950  4.021196e-01
+     frozenset({chicken, rice})  frozenset({bag})    0.088    0.739496 1.060970  3.328167e-01
+        frozenset({rice, milk})  frozenset({bag})    0.079    0.738318 1.059279  3.827428e-01
+              frozenset({rice})  frozenset({bag})    0.273    0.726064 1.041698  1.384957e-01
+     frozenset({chicken, milk})  frozenset({bag})    0.069    0.718750 1.031205  7.106890e-01
+    frozenset({chicken, water})  frozenset({bag})    0.082    0.713043 1.023018  7.717314e-01
+
+============================================================
+(B) Strong/Interesting Rules = (A) AND Lift > 1
+============================================================
+Count: 86 rules
+                     antecedent               consequent  support  confidence     lift       p_value
+             frozenset({chips})        frozenset({beer})    0.113    1.000000 4.032258  5.139122e-85
+              frozenset({beer})       frozenset({chips})    0.113    0.455645 4.032258  5.139122e-85
+       frozenset({water, milk}) frozenset({bag, cereal})    0.056    0.417910 3.239616  3.574766e-26
+       frozenset({bag, cereal}) frozenset({water, milk})    0.056    0.434109 3.239616  3.574766e-26
+       frozenset({water, milk})      frozenset({cereal})    0.083    0.619403 3.226057  7.880558e-41
+            frozenset({cereal}) frozenset({water, milk})    0.083    0.432292 3.226057  7.880558e-41
+            frozenset({cereal})        frozenset({milk})    0.192    1.000000 3.134796 1.725405e-111
+             frozenset({bread})        frozenset({milk})    0.129    1.000000 3.134796  5.967343e-70
+       frozenset({bag, cereal})        frozenset({milk})    0.129    1.000000 3.134796  5.967343e-70
+        frozenset({bag, bread})        frozenset({milk})    0.087    1.000000 3.134796  2.081941e-45
+     frozenset({water, cereal})        frozenset({milk})    0.083    1.000000 3.134796  3.476111e-43
+frozenset({bag, water, cereal})        frozenset({milk})    0.056    1.000000 3.134796  1.174017e-28
+              frozenset({milk})      frozenset({cereal})    0.192    0.601881 3.134796 1.725405e-111
+              frozenset({milk})       frozenset({bread})    0.129    0.404389 3.134796  5.967343e-70
+              frozenset({milk}) frozenset({bag, cereal})    0.129    0.404389 3.134796  5.967343e-70
+
+============================================================
+(C) Significant Rules = (B) AND p-value < 0.05
+============================================================
+Count: 25 rules
+                     antecedent               consequent  support  confidence     lift       p_value
+            frozenset({cereal})        frozenset({milk})    0.192    1.000000 3.134796 1.725405e-111
+              frozenset({milk})      frozenset({cereal})    0.192    0.601881 3.134796 1.725405e-111
+             frozenset({chips})        frozenset({beer})    0.113    1.000000 4.032258  5.139122e-85
+              frozenset({beer})       frozenset({chips})    0.113    0.455645 4.032258  5.139122e-85
+             frozenset({bread})        frozenset({milk})    0.129    1.000000 3.134796  5.967343e-70
+       frozenset({bag, cereal})        frozenset({milk})    0.129    1.000000 3.134796  5.967343e-70
+              frozenset({milk})       frozenset({bread})    0.129    0.404389 3.134796  5.967343e-70
+              frozenset({milk}) frozenset({bag, cereal})    0.129    0.404389 3.134796  5.967343e-70
+            frozenset({cereal})   frozenset({bag, milk})    0.129    0.671875 3.110532  1.170259e-64
+         frozenset({bag, milk})      frozenset({cereal})    0.129    0.597222 3.110532  1.170259e-64
+        frozenset({bag, bread})        frozenset({milk})    0.087    1.000000 3.134796  2.081941e-45
+     frozenset({water, cereal})        frozenset({milk})    0.083    1.000000 3.134796  3.476111e-43
+             frozenset({bread})   frozenset({bag, milk})    0.087    0.674419 3.122308  3.413767e-41
+         frozenset({bag, milk})       frozenset({bread})    0.087    0.402778 3.122308  3.413767e-41
+       frozenset({water, milk})      frozenset({cereal})    0.083    0.619403 3.226057  7.880558e-41
+            frozenset({cereal}) frozenset({water, milk})    0.083    0.432292 3.226057  7.880558e-41
+frozenset({bag, water, cereal})        frozenset({milk})    0.056    1.000000 3.134796  1.174017e-28
+       frozenset({water, milk}) frozenset({bag, cereal})    0.056    0.417910 3.239616  3.574766e-26
+       frozenset({bag, cereal}) frozenset({water, milk})    0.056    0.434109 3.239616  3.574766e-26
+     frozenset({water, cereal})   frozenset({bag, milk})    0.056    0.674699 3.123606  1.245538e-25
+  frozenset({bag, water, milk})      frozenset({cereal})    0.056    0.589474 3.070175  1.935206e-24
+         frozenset({beer, bag})        frozenset({rice})    0.080    0.462428 1.229861  1.261706e-02
+      frozenset({water, straw})        frozenset({milk})    0.052    0.416000 1.304075  1.708508e-02
+       frozenset({water, milk})       frozenset({straw})    0.052    0.388060 1.272327  3.209035e-02
+              frozenset({beer})        frozenset({rice})    0.107    0.431452 1.147478  4.513794e-02
+
+============================================================
+Spurious Rules removed in Step B (Lift <= 1)
+============================================================
+Count: 35 rules
+                 antecedent         consequent  support  confidence     lift  p_value                       reason
+     frozenset({bag, rice}) frozenset({water})    0.113    0.413919 0.997396 1.000000 Low Lift (<=1) → Independent
+           frozenset({bag})  frozenset({soda})    0.211    0.302726 0.995809 0.953714 Low Lift (<=1) → Independent
+          frozenset({soda})   frozenset({bag})    0.211    0.694079 0.995809 0.953714 Low Lift (<=1) → Independent
+frozenset({chicken, straw})   frozenset({bag})    0.058    0.690476 0.990640 0.990500 Low Lift (<=1) → Independent
+     frozenset({bag, milk})  frozenset({soda})    0.065    0.300926 0.989888 0.978142 Low Lift (<=1) → Independent
+           frozenset({bag}) frozenset({water})    0.286    0.410330 0.988747 0.700420 Low Lift (<=1) → Independent
+         frozenset({water})   frozenset({bag})    0.286    0.689157 0.988747 0.700420 Low Lift (<=1) → Independent
+         frozenset({water}) frozenset({straw})    0.125    0.301205 0.987557 0.880881 Low Lift (<=1) → Independent
+         frozenset({straw}) frozenset({water})    0.125    0.409836 0.987557 0.880881 Low Lift (<=1) → Independent
+  frozenset({water, straw})   frozenset({bag})    0.086    0.688000 0.987088 0.896533 Low Lift (<=1) → Independent
+    frozenset({bag, water}) frozenset({straw})    0.086    0.300699 0.985899 0.911652 Low Lift (<=1) → Independent
+     frozenset({bag, milk})  frozenset({rice})    0.079    0.365741 0.972715 0.785440 Low Lift (<=1) → Independent
+           frozenset({bag})  frozenset({milk})    0.216    0.309900 0.971472 0.388336 Low Lift (<=1) → Independent
+          frozenset({milk})   frozenset({bag})    0.216    0.677116 0.971472 0.388336 Low Lift (<=1) → Independent
+   frozenset({soda, water})   frozenset({bag})    0.094    0.676259 0.970242 0.635501 Low Lift (<=1) → Independent
+
+============================================================
+Spurious Rules removed in Step C (p-value >= 0.05)
+============================================================
+Count: 61 rules
+                 antecedent              consequent  support  confidence     lift  p_value                                  reason
+          frozenset({beer})  frozenset({bag, rice})    0.080    0.322581 1.181614 0.052516 High p-value (>=0.05) → Not Significant
+          frozenset({soda})      frozenset({water})    0.139    0.457237 1.101776 0.085114 High p-value (>=0.05) → Not Significant
+         frozenset({water})       frozenset({soda})    0.139    0.334940 1.101776 0.085114 High p-value (>=0.05) → Not Significant
+   frozenset({straw, milk})      frozenset({water})    0.052    0.490566 1.182087 0.117412 High p-value (>=0.05) → Not Significant
+           frozenset({bag})       frozenset({rice})    0.273    0.391679 1.041698 0.138496 High p-value (>=0.05) → Not Significant
+          frozenset({rice})        frozenset({bag})    0.273    0.726064 1.041698 0.138496 High p-value (>=0.05) → Not Significant
+  frozenset({bag, chicken})       frozenset({rice})    0.088    0.421053 1.119821 0.152258 High p-value (>=0.05) → Not Significant
+  frozenset({water, straw})       frozenset({rice})    0.054    0.432000 1.148936 0.199449 High p-value (>=0.05) → Not Significant
+frozenset({chicken, water})       frozenset({rice})    0.050    0.434783 1.156337 0.200175 High p-value (>=0.05) → Not Significant
+         frozenset({straw})       frozenset({milk})    0.106    0.347541 1.089470 0.226619 High p-value (>=0.05) → Not Significant
+          frozenset({milk})      frozenset({straw})    0.106    0.332288 1.089470 0.226619 High p-value (>=0.05) → Not Significant
+    frozenset({beer, rice})        frozenset({bag})    0.080    0.747664 1.072688 0.273313 High p-value (>=0.05) → Not Significant
+    frozenset({soda, rice})        frozenset({bag})    0.081    0.743119 1.066168 0.317510 High p-value (>=0.05) → Not Significant
+          frozenset({soda}) frozenset({bag, water})    0.094    0.309211 1.081156 0.318575 High p-value (>=0.05) → Not Significant
+    frozenset({bag, water})       frozenset({soda})    0.094    0.328671 1.081156 0.318575 High p-value (>=0.05) → Not Significant
+
+============================================================
+SUMMARY
+============================================================
+(A) Support & Confidence : 121 rules
+(B) + Lift > 1           : 86 rules
+(C) + p-value < 0.05     : 25 rules
+
+Spurious rules removed in B (lift<=1): 35
+Spurious rules removed in C (p>=0.05): 61
+
+============================================================
+END OF QUESTION 3 OUTPUT
+============================================================

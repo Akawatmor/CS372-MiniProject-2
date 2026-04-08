@@ -1,0 +1,57 @@
+Mini Project 2: Association Rule Mining
+
+ “Exploring Association Rules: From Patterns to Real Insights”
+ข้อ 1. เข้าใจปัญหาการเพิ่มขึ้นของ Itemset: Search Space
+หากจำนวน items เป็น 30, 100 และ 200 items ตามลำดับ
+คำถาม:	1.1. จำนวน itemset ที่เป็นไปได้ มีจำนวนเท่าไร ตามลำดับ
+1.2. Search space เปลี่ยนอย่างไร ให้นักศึกษาประมาณแนวโน้ม
+1.3. เมื่อจำนวน item มากขึ้น มีโอกาสใช้หน่วยความจำสูงจนไม่สามารถคำนวณทั้งหมดได้หรือไม่ (memory explosion)
+
+---
+
+ข้อ 2. Frequent Itemset
+ตัวอย่าง Python code สำหรับคำถามข้อ 2
+Path: dataset/ARM_question2.ipynb
+
+2.1. Algorithm Comparison
+เปรียบเทียบขั้นตอนวิธีการหา frequent itemset ได้แก่ 1) Apriori, 2) FP-Growth และ 3) Compact Representation โดยกำหนดค่า minimum support เท่ากับ 0.05 ที่จำนวน 1,000 transactions และ จำนวน item = 30
+คำถาม:	
+2.1.1. ขั้นตอนวิธีใดใช้เวลาคำนวณเร็วที่สุด เพราะอะไร
+2.1.2. ขั้นตอนวิธีใดใช้หน่วยความจำน้อยที่สุด
+2.1.3. ขั้นตอนวิธีใดใช้หน่วยความจำใกล้ คำนิยาม Information-Theoretic Minimum มากที่สุด
+2.1.4. ขั้นตอนวิธีใด เหมาะกับ dataset ขนาดใหญ่ มากที่สุด
+2.1.5. ขั้นตอนวิธี Compact Representation มีข้อจำกัดอะไร เมื่อข้อมูลมีขนาดใหญ่ขึ้น
+
+2.2. Performance & Scalability
+2.2.1. ทดลองแปลงจำนวน transaction เป็น 1,000 / 3,000 / 5,000 และ 10,000 transactions โดยค่า minimum support = 0.05 จำนวน frequent itemset ที่ได้ของแต่ละขั้นตอนวิธี ทั้งสามเป็นเท่าไร มีแนวโน้มเป็นอย่างไร เพราะเหตุใด
+2.2.2. ที่ 1,000 transactions ทดลองเปลี่ยนค่า minimum support เป็น 0.01, 0.05, 0.1 และ 0.2 จำนวน frequent itemset (ตั้งแต่ 2-itemset ขึ้นไป) ที่ได้ของแต่ละขั้นตอนวิธีทั้งสามเป็นเท่าไร เมื่อปรับค่า minimum support มากขึ้น จำนวน frequent itemset จะมากขึ้น หรือ ลดลง แสดงจำนวน frequent itemset ประกอบ
+2.2.3 ที่ 1,000 transactions และ minimum support = 0.05 ทดลองเปลี่ยนค่าขอบเขตบน max_itemset จาก k=4 ถึง k=8 จำนวน frequent itemset (ตั้งแต่ 2-itemset ขึ้นไป) ที่ได้ของ แต่ละขั้นตอนวิธีทั้งสามเป็นเท่าไร เมื่อปรับค่า max_itemset มากขึ้น จำนวน frequent itemset จะ มากขึ้น ลดลง หรือ คงที่ เพราะเหตุใด แสดงจำนวน frequent itemset ประกอบ
+
+---
+
+ข้อ 3. Association Rule
+ตัวอย่าง Python code สำหรับคำถามข้อ 3 
+Path: dataset/ARM_question3.ipynb
+
+เมื่อใช้ขั้นตอนวิธี Association Mining ค้นหาการปรากฏร่วมกันของสินค้าที่ 1,000 transactions และ minimum support = 0.05 ได้กฎความสัมพันธ์แสดงการปรากฎร่วมกันของสินค้าจำนวนหนึ่ง
+ขั้นตอน A: คัดกรองกฎที่ได้ด้วย support และ confidence เมื่อกำหนดค่า minimum confidence = 0.3 เรียกกฎที่มีค่า support มากกว่าเท่ากับ 0.05 และ confidence มากกว่าเท่ากับ 0.3 ว่า Basic Rules
+ขั้นตอน B: คัดกรองกฎที่ได้จาก ขั้นตอน A เพิ่มด้วยค่า lift > 1 เรียกกฎที่ผ่านขั้นตอน B ว่า Strong Rules หรือ Interesting Rules
+ขั้นตอน C: คัดกรองกฎที่ได้จาก ขั้นตอน B เพิ่มด้วย p-value < 0.05 เรียก กฎที่ผ่านว่าขั้นตอน C ว่า Significant Rules
+หมายเหตุ คำอธิบายเกี่ยวกับ ค่า lift และ p-value เล่าไปแล้วในคาบบรรยาย
+
+คำถาม:	
+3.1. ยกตัวอย่างกฎที่ถูกตัดออกในขั้นตอน A มา 1 กฎ ให้เหตุผลประกอบว่าทำไมกฎดังกล่าวถึงถูกกรองออก
+3.2. ยกตัวอย่างกฎที่ถูกตัดออกในขั้นตอน B มา 1 กฎ ให้เหตุผลประกอบว่าทำไมกฎดังกล่าวถึงถูกกรองออก
+3.3. ยกตัวอย่างกฎที่ถูกตัดออกในขั้นตอน C มา 1 กฎ ให้เหตุผลประกอบว่าทำไมกฎดังกล่าวถึงถูกกรองออก
+3.4. Spurious Rules คืออะไร ส่งผลกับการอธิบายความสัมพันธ์ของการปรากฎร่วมกันของสินค้าอย่างไร การกรอง spurious rules ออกมีผลดีหรือผลเสียอย่างไร
+3.5. ทำไม 1-itemset {bag} ถึงหายไป หลังจากการกรองทั้งสามขั้นตอน
+3.6. ยกตัวอย่างกฎที่ผ่านการกรองทั้งสามขั้นตอน มา 3 ข้อ ข้อใดก็ได้ อธิบายด้วยคำอธิบายที่เข้าใจง่ายที่สุด
+
+ข้อ 4 และข้อ 5 การประยุกต์ใช้กับ Real-world Dataset
+ให้ทำกับ dataset ที่กำหนดให้ 2 dataset ที่เป็นไฟล์ csv ในโฟลเดอร์ dataset คือ bread_basket.csv และ spotify_dataset.csv จากนั้นในทั้ง 2 dataset ให้ค้นหา frequent itemset และ association rules โดยกำหนดค่า minimum support และ minimum confidence ด้วยตนเอง การกำหนดค่าควรมาจากการทดลองหลายครั้ง และเลือกค่าที่ให้ผลดีที่สุดจากการทดลอง
+สำคัญ! ทั้ง 2 Dataset นี้เป็นอิสระต่อกัน โปรดทำแยกโดยใช้โจทย์ตอบคำถามด้านล่างเดียวกัน
+คำถาม:	
+4.1. ค่า minimum support และ minimum confidence ที่กำหนดคือเท่าใด
+4.2. ใน dataset ที่เลือก มี Spurious Correlation หรือไม่
+4.3. ใน dataset ที่เลือก มี Surprising Pattern/Knowledge หรือไม่ (ถ้ามี ให้ระบุ ถ้าไม่มี ให้ตอบว่า ไม่พบ/ไม่มี ให้ชัดเจน)
+4.4. อธิบายกฎที่น่าสนใจ ด้วย Domain Knowledge 

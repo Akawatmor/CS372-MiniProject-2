@@ -1,0 +1,93 @@
+Loading 1000 transactions...
+Loading 3000 transactions...
+Loading 5000 transactions...
+Loading 10000 transactions...
+✅ Loaded all datasets
+
+============================================================
+2.1 Algorithm Comparison
+============================================================
+Apriori → Time=0.0287s | Memory=3.21MB
+FP-Growth → Time=0.0716s | Memory=0.47MB
+Compact → Time=0.1390s | Memory=0.08MB
+
+============================================================
+2.2.1 Scaling (Different Transaction Counts)
+============================================================
+
+N=1000
+Apriori → Count=90 | Time=0.0169s | Mem=3.17MB
+FP-Growth → Count=90 | Time=0.0507s | Mem=0.47MB
+Compact → Count=44 | Time=0.1281s | Mem=0.08MB
+
+N=3000
+Apriori → Count=89 | Time=0.0215s | Mem=9.61MB
+FP-Growth → Count=89 | Time=0.1255s | Mem=1.38MB
+Compact → Count=42 | Time=0.3590s | Mem=0.19MB
+
+N=5000
+Apriori → Count=90 | Time=0.0244s | Mem=15.89MB
+FP-Growth → Count=90 | Time=0.2011s | Mem=2.30MB
+Compact → Count=41 | Time=0.5940s | Mem=0.31MB
+
+N=10000
+Apriori → Count=89 | Time=0.0318s | Mem=31.76MB
+FP-Growth → Count=89 | Time=0.3730s | Mem=4.59MB
+Compact → Count=41 | Time=1.2168s | Mem=0.61MB
+
+============================================================
+2.2.2 Min Support Variation
+============================================================
+
+min_sup = 0.01
+Apriori → Count=417 | Time=0.0400s | Mem=9.68MB
+FP-Growth → Count=417 | Time=0.0792s | Mem=0.54MB
+Compact → Count=38 | Time=0.1334s | Mem=0.08MB
+
+min_sup = 0.05
+Apriori → Count=79 | Time=0.0172s | Mem=3.17MB
+FP-Growth → Count=79 | Time=0.0538s | Mem=0.47MB
+Compact → Count=33 | Time=0.1346s | Mem=0.08MB
+
+min_sup = 0.1
+Apriori → Count=24 | Time=0.0133s | Mem=1.95MB
+FP-Growth → Count=24 | Time=0.0532s | Mem=0.47MB
+Compact → Count=22 | Time=0.1408s | Mem=0.08MB
+
+min_sup = 0.2
+Apriori → Count=6 | Time=0.0098s | Mem=0.70MB
+FP-Growth → Count=6 | Time=0.0466s | Mem=0.47MB
+Compact → Count=6 | Time=0.1409s | Mem=0.08MB
+
+============================================================
+2.2.3 Max Length / Max K Experiment
+============================================================
+
+k = 4
+Apriori → Count=90 | Time=0.0186s | Mem=3.17MB
+FP-Growth → Count=90 | Time=0.0555s | Mem=0.47MB
+Compact → Count=44 | Time=0.1372s | Mem=0.09MB
+
+k = 5
+Apriori → Count=90 | Time=0.0173s | Mem=3.17MB
+FP-Growth → Count=90 | Time=0.0581s | Mem=0.47MB
+Compact → Count=44 | Time=0.1349s | Mem=0.08MB
+
+k = 6
+Apriori → Count=90 | Time=0.0166s | Mem=3.17MB
+FP-Growth → Count=90 | Time=0.0524s | Mem=0.47MB
+Compact → Count=44 | Time=0.1272s | Mem=0.09MB
+
+k = 7
+Apriori → Count=90 | Time=0.0163s | Mem=3.17MB
+FP-Growth → Count=90 | Time=0.0494s | Mem=0.47MB
+Compact → Count=44 | Time=0.1319s | Mem=0.08MB
+
+k = 8
+Apriori → Count=90 | Time=0.0166s | Mem=3.17MB
+FP-Growth → Count=90 | Time=0.0515s | Mem=0.47MB
+Compact → Count=44 | Time=0.1218s | Mem=0.09MB
+
+============================================================
+END OF QUESTION 2 OUTPUT
+============================================================

@@ -1,0 +1,98 @@
+======================================================================
+SPOTIFY DATASET ANALYSIS
+======================================================================
+
+Dataset Statistics:
+- Loaded records: 200000
+- Unique users: 239
+- Unique artists: 20202
+
+Top 15 artists:
+artistname
+Johnny Cash              1026
+Red Hot Chili Peppers    1000
+Arctic Monkeys            775
+Daft Punk                 762
+Pearl Jam                 731
+JAY Z                     662
+Andrés Calamaro           610
+Ramones                   573
+Queen                     565
+Coldplay                  558
+Blur                      511
+Nirvana                   497
+Green Day                 495
+Kanye West                493
+Bruce Springsteen         467
+Name: count, dtype: int64
+
+Filtered to top 30 artists: 15969 records
+Unique users in filtered data: 184
+One-hot encoded shape: (184, 30)
+
+======================================================================
+Testing Different min_support Thresholds
+======================================================================
+min_sup=0.05: 1067 frequent itemsets
+min_sup=0.1: 140 frequent itemsets
+min_sup=0.15: 42 frequent itemsets
+min_sup=0.2: 18 frequent itemsets
+min_sup=0.25: 13 frequent itemsets
+
+======================================================================
+Selected Parameters: min_support=0.15, min_confidence=0.4
+======================================================================
+Frequent itemsets: 42
+All rules generated: 40
+
+(A) Basic Rules (support + confidence): 40
+(B) Strong Rules (+ lift > 1): 40
+(C) Significant Rules (+ p < 0.05): 36
+
+======================================================================
+Top 25 Significant Rules (Sorted by Lift)
+======================================================================
+                           antecedents                         consequents   support  confidence      lift       p_value
+33                 frozenset({Eminem})                  frozenset({JAY Z})  0.152174    0.777778  2.201709  9.066783e-09
+32                  frozenset({JAY Z})                 frozenset({Eminem})  0.152174    0.430769  2.201709  9.066783e-09
+35             frozenset({Kanye West})                  frozenset({JAY Z})  0.228261    0.736842  2.085830  1.033685e-12
+34                  frozenset({JAY Z})             frozenset({Kanye West})  0.228261    0.646154  2.085830  1.033685e-12
+39             frozenset({Kanye West})           frozenset({Lana Del Rey})  0.173913    0.561404  1.949024  1.098866e-07
+38           frozenset({Lana Del Rey})             frozenset({Kanye West})  0.173913    0.603774  1.949024  1.098866e-07
+9          frozenset({Arctic Monkeys})            frozenset({The Killers})  0.168478    0.492063  1.886243  6.475906e-07
+8             frozenset({The Killers})         frozenset({Arctic Monkeys})  0.168478    0.645833  1.886243  6.475906e-07
+11                frozenset({Beyoncé})                  frozenset({JAY Z})  0.152174    0.651163  1.843292  7.241850e-06
+10                  frozenset({JAY Z})                frozenset({Beyoncé})  0.152174    0.430769  1.843292  7.241850e-06
+21            frozenset({The Killers})               frozenset({Coldplay})  0.168478    0.645833  1.773632  5.536961e-06
+20               frozenset({Coldplay})            frozenset({The Killers})  0.168478    0.462687  1.773632  5.536961e-06
+6   frozenset({Red Hot Chili Peppers})         frozenset({Arctic Monkeys})  0.152174    0.571429  1.668934  1.640056e-04
+7          frozenset({Arctic Monkeys})  frozenset({Red Hot Chili Peppers})  0.152174    0.444444  1.668934  1.640056e-04
+37                  frozenset({JAY Z})           frozenset({Lana Del Rey})  0.168478    0.476923  1.655733  6.043510e-05
+36           frozenset({Lana Del Rey})                  frozenset({JAY Z})  0.168478    0.584906  1.655733  6.043510e-05
+29              frozenset({Daft Punk})                frozenset({Nirvana})  0.152174    0.411765  1.647059  2.126325e-04
+28                frozenset({Nirvana})              frozenset({Daft Punk})  0.152174    0.608696  1.647059  2.126325e-04
+26           frozenset({Lana Del Rey})              frozenset({Daft Punk})  0.173913    0.603774  1.633740  5.873454e-05
+27              frozenset({Daft Punk})           frozenset({Lana Del Rey})  0.173913    0.470588  1.633740  5.873454e-05
+31              frozenset({Daft Punk})  frozenset({Red Hot Chili Peppers})  0.157609    0.426471  1.601441  3.301124e-04
+30  frozenset({Red Hot Chili Peppers})              frozenset({Daft Punk})  0.157609    0.591837  1.601441  3.301124e-04
+14               frozenset({Coldplay})                  frozenset({JAY Z})  0.195652    0.537313  1.521010  1.492366e-04
+15                  frozenset({JAY Z})               frozenset({Coldplay})  0.195652    0.553846  1.521010  1.492366e-04
+22                  frozenset({JAY Z})              frozenset({Daft Punk})  0.195652    0.553846  1.498643  2.447792e-04
+
+======================================================================
+Spurious Rules Analysis
+======================================================================
+
+Rules with Lift <= 1 (filtered in Step B): 0
+None found - all rules have lift > 1
+
+Rules with p-value >= 0.05 (filtered in Step C): 4
+                    antecedents                  consequents   support  confidence      lift   p_value
+0         frozenset({Coldplay})  frozenset({Arctic Monkeys})  0.152174    0.417910  1.220564  0.140957
+1   frozenset({Arctic Monkeys})        frozenset({Coldplay})  0.152174    0.444444  1.220564  0.140957
+12        frozenset({Coldplay})       frozenset({Daft Punk})  0.168478    0.462687  1.251975  0.068512
+13       frozenset({Daft Punk})        frozenset({Coldplay})  0.168478    0.455882  1.251975  0.068512
+
+======================================================================
+END OF SPOTIFY ANALYSIS
+======================================================================

@@ -1,0 +1,76 @@
+======================================================================
+BREAD BASKET DATASET ANALYSIS
+======================================================================
+
+Dataset Statistics:
+- Raw records: 20507
+- Unique transactions: 9465
+- Unique items: 94
+
+Top 15 items:
+Item
+Coffee           5471
+Bread            3325
+Tea              1435
+Cake             1025
+Pastry            856
+Sandwich          771
+Medialuna         616
+Hot chocolate     590
+Cookies           540
+Brownie           379
+Farm House        374
+Muffin            370
+Juice             369
+Alfajores         369
+Soup              342
+Name: count, dtype: int64
+
+One-hot encoded shape: (9465, 94)
+
+======================================================================
+Testing Different min_support Thresholds
+======================================================================
+min_sup=0.01: 61 frequent itemsets
+min_sup=0.02: 33 frequent itemsets
+min_sup=0.03: 23 frequent itemsets
+min_sup=0.05: 11 frequent itemsets
+
+======================================================================
+Selected Parameters: min_support=0.02, min_confidence=0.3
+======================================================================
+Frequent itemsets: 33
+All rules generated: 28
+
+(A) Basic Rules (support + confidence): 10
+(B) Strong Rules (+ lift > 1): 9
+(C) Significant Rules (+ p < 0.05): 6
+
+======================================================================
+Significant Rules (Sorted by Lift)
+======================================================================
+               antecedents          consequents   support  confidence      lift       p_value
+26      frozenset({Toast})  frozenset({Coffee})  0.023666    0.704403  1.472431  3.636144e-16
+18  frozenset({Medialuna})  frozenset({Coffee})  0.035182    0.569231  1.189878  6.858326e-06
+20     frozenset({Pastry})  frozenset({Coffee})  0.047544    0.552147  1.154168  1.228884e-05
+16      frozenset({Juice})  frozenset({Coffee})  0.020602    0.534247  1.116750  3.357804e-02
+22   frozenset({Sandwich})  frozenset({Coffee})  0.038246    0.532353  1.112792  3.927546e-03
+8        frozenset({Cake})  frozenset({Coffee})  0.054728    0.526958  1.101515  1.441754e-03
+
+======================================================================
+Spurious Rules Analysis
+======================================================================
+
+Rules with Lift <= 1 (filtered in Step B): 1
+         antecedents          consequents   support  confidence     lift
+24  frozenset({Tea})  frozenset({Coffee})  0.049868     0.34963  0.73084
+
+Rules with p-value >= 0.05 (filtered in Step C): 3
+                   antecedents          consequents   support  confidence      lift   p_value
+4          frozenset({Pastry})   frozenset({Bread})  0.029160    0.338650  1.034977  0.490582
+13        frozenset({Cookies})  frozenset({Coffee})  0.028209    0.518447  1.083723  0.067875
+14  frozenset({Hot chocolate})  frozenset({Coffee})  0.029583    0.507246  1.060311  0.175575
+
+======================================================================
+END OF BREAD BASKET ANALYSIS
+======================================================================
